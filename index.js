@@ -107,6 +107,45 @@ app.put('/posts/:id/downvote', jsonParser, (req, res) => {
   })
 })
 
+app.delete('/posts/:id', jsonParser, (req, res) => {
+  conn.query(`DELETE from posts WHERE id = ${req.params.id};`, (err3, result) => {
+    if (err3) {
+      console.log(`Database error SPECIFIC DELETE`);
+      res.status(500).send(err3.message);
+      return;
+    } 
+    res.status(200).json({
+      message: `Your post was deleted`,
+    })
+  })
+})
+
+app.put('/posts/:id', jsonParser, (req, res) => {
+  if (req.body.title && req.body.url) {
+    conn.query(`UPDATE posts SET url = '${req.body.url}', title = '${req.body.title}' WHERE posts.id = ${req.params.id};`, (err4) => {
+      if (err4) {
+        console.log(`Database error UPDATE`);
+        res.status(500).send(err4.message);
+        return;
+      } 
+      conn.query(`SELECT * from posts WHERE id = ${req.params.id}`, (err5, specificPost) => {
+        if (err5) {
+          console.log(`Database error SPECIFIC UPDATE`);
+          res.status(500).send(err5.message);
+          return;
+        } 
+        res.status(200).json({
+          specificPost,
+        })
+      })
+    })
+  } else {
+  console.log(`Database error UPDATE`);
+  res.status(500).send(`Please enter your data`);
+  return;
+  }
+})
+
 app.listen(PORT, () => {
   console.log(`App is up and running on port ${PORT}`);
 });
