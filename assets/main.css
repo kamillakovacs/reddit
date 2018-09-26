@@ -1,0 +1,52 @@
+body {
+  font-family: 'Lato', sans-serif;
+  width: 1000px;
+  height: 500px;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  justify-content: center;
+}
+
+#maincontent {
+  display: flex; 
+  flex-direction: column; 
+}
+
+.newPostDiv {
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.arrow-column {
+  width: 20px;
+  height: 25px;
+  padding: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.uparrow {
+  width: 20px;
+  padding: 5px;
+}
+
+.downarrow {
+  width: 20px;
+  padding: 5px;
+}
+
+#post-column {
+  width: 80%;
+}
+
+img {
+  width: 800px;
+}

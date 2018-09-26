@@ -5,10 +5,9 @@ const app = express();
 const PORT = 3000;
 const path = require('path');
 const mysql = require('mysql');
-// const cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-
 
 const conn = mysql.createConnection({
   host: 'localhost',
@@ -18,25 +17,22 @@ const conn = mysql.createConnection({
 });
 
 app.use('/assets', express.static('assets'));
-// app.use(cors());
+app.use(cors());
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'index.html'));
-// })
-
-app.get('/hello', (req, res) => {
-  console.log('hello world');
-})
+app.get('/', function(request, response) {
+  console.log(request.headers);
+  response.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.get('/posts', (req, res) => {
   conn.query(`SELECT * FROM POSTS`, (err, posts) => {
     if (err) {
-      res.json({
-        error: err.message,
-      })
+      res.status(500).json({
+        error: 'Unexpected error',
+    })
     } else {
       res.status(200).json({
-        posts,
+        posts: posts,
       })
     }
   })
@@ -45,9 +41,10 @@ app.get('/posts', (req, res) => {
 app.post('/posts', jsonParser, (req, res) => {
   let postTitle = req.body.title;
   let postURL = req.body.url;
+  let postUser = req.body.username;
 
-  if (postTitle && postURL) {
-    conn.query(`INSERT INTO posts (title, url) values ('${postTitle}', '${postURL}');`, (err, result) => {
+  if (postTitle && postURL && postUser) {
+    conn.query(`INSERT INTO posts (title, url, username) values ('${postTitle}', '${postURL}', '${postUser}');`, (err, result) => {
       if (err) {
         console.log(`Database error POST`);
         res.status(500).send(err.message);
@@ -68,7 +65,7 @@ app.post('/posts', jsonParser, (req, res) => {
 })
 
 app.put('/posts/:id/upvote', jsonParser, (req, res) => {
-  conn.query(`UPDATE posts SET score = score + 1 WHERE id = ${req.params.id};`, (err, result) => {
+  conn.query(`UPDATE posts SET score = score + 1 WHERE id = ${req.params.id};`), (err, result) => {
     if (err) {
       console.log(`Database error PUT UP`);
       res.status(500).send(err.message);
@@ -84,7 +81,7 @@ app.put('/posts/:id/upvote', jsonParser, (req, res) => {
         posts: specificPost,
       })
     })
-  })
+  }
 })
 
 app.put('/posts/:id/downvote', jsonParser, (req, res) => {
