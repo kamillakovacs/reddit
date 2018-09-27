@@ -1,12 +1,15 @@
 body {
   font-family: 'Lato', sans-serif;
-  width: 1000px;
+  width: 800px;
   height: 500px;
+  background-color: lightgray;
+  margin: auto;
 }
 
 #container {
   display: flex;
   flex-wrap: wrap;
+  color: rgb(91, 91, 91)
 }
 
 header {
@@ -16,20 +19,24 @@ header {
 #maincontent {
   display: flex; 
   flex-direction: column; 
+  width: 800px;
 }
 
 .newPostDiv {
-  height: 100px;
+  height: 70px;
   display: flex;
   flex-wrap: wrap;
+  background-color: white;
+  margin: 0 0 10px 0;
+  padding: 10px; 
 }
 
 .arrow-column {
   width: 20px;
   height: 25px;
-  padding: 10px;
+  padding-right: 10px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -45,6 +52,20 @@ header {
 
 #post-column {
   width: 80%;
+  align-content: center;
+  justify-content: center;
+}
+
+.edit-posts {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  padding-top: 10px;
+  height: 70px;
+}
+
+.remove-div {
+  margin-right: 5px;
 }
 
 img {
