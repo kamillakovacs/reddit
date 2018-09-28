@@ -14,6 +14,8 @@ window.onload = () => {
  
     postList.forEach(post => {
       const newDiv = document.createElement('div');
+      const upButton = document.createElement('button');
+
       const upArrow = document.createElement('img')
       const downArrow = document.createElement('img')
       const voteCounter = document.createElement('div')
@@ -21,7 +23,6 @@ window.onload = () => {
       const arrowColumn = document.createElement('div');
       const aboutColumn = document.createElement('div');
       const postLink = document.createElement('a');
-      // const submission = document.createAttribute('div');
       const editPosts = document.createElement('div');
       const modifyDiv = document.createElement('div');
       const removeDiv = document.createElement('div');
@@ -31,6 +32,7 @@ window.onload = () => {
       newDiv.classList.add('newPostDiv');
       upArrow.setAttribute('src', 'assets/upvote.png');
       downArrow.setAttribute('src', 'assets/downvote.png');
+      upButton.classList.add('upbutton')
       upArrow.classList.add('uparrow');
       downArrow.classList.add('downarrow');
       arrowColumn.classList.add('arrow-column');
@@ -48,6 +50,7 @@ window.onload = () => {
       mainContent.appendChild(newDiv);
       newDiv.appendChild(arrowColumn)
       newDiv.appendChild(postColumn)
+      arrowColumn.appendChild(upButton)
       arrowColumn.appendChild(upArrow)
       arrowColumn.appendChild(voteCounter);
       arrowColumn.appendChild(downArrow)
@@ -63,7 +66,15 @@ window.onload = () => {
       removeLink.innerText = "remove";
       voteCounter.innerHTML = post.score;
 
-      
+
+      upButton.addEventListener('click', () => {
+          console.log('click')
+          fetch(`${host}/posts/${post.id}/upvote`, {
+            method: 'put',
+          }).then((resp) => (resp.body))
+          // .then(response => {
+          // })
+      })
 
       });
     }
