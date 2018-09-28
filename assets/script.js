@@ -2,7 +2,8 @@ window.onload = () => {
   const host = 'http://localhost:3000';
   const http = new XMLHttpRequest();
   const mainContent = document.querySelector('#maincontent');
-  
+  const newPostButton = document.querySelector('#newpostbutton');
+
   http.open('GET', `${host}/posts`, true);
   console.log(http);
   
@@ -18,8 +19,9 @@ window.onload = () => {
       const voteCounter = document.createElement('div')
       const postColumn = document.createElement('div')
       const arrowColumn = document.createElement('div');
+      const aboutColumn = document.createElement('div');
       const postLink = document.createElement('a');
-      const submission = document.createAttribute('div');
+      // const submission = document.createAttribute('div');
       const editPosts = document.createElement('div');
       const modifyDiv = document.createElement('div');
       const removeDiv = document.createElement('div');

@@ -16,10 +16,29 @@ header {
   justify-content: center;
 }
 
+#maincolumn {
+  display: flex;
+}
+
 #maincontent {
   display: flex; 
   flex-direction: column; 
-  width: 800px;
+  width: 600px;
+}
+
+#about {
+  width: 190px;
+  justify-content: center;
+  background-color: white;
+  margin-left: 10px;
+}
+
+h2 {
+  text-align: center;
+}
+
+#add-new {
+  text-align: center;
 }
 
 .newPostDiv {
@@ -59,7 +78,7 @@ header {
 .edit-posts {
   display: flex;
   flex-wrap: wrap;
-  font-size: 12px;
+  font-size: 10px;
   padding-top: 10px;
   height: 70px;
 }
