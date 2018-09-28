@@ -9,15 +9,19 @@
 </head>
 <body>
   <div id="container">
-    <form action="/" method="post">
+    <form action="http://localhost:3000/posts" method="post" enctype="application/json">
       <h2>ADD NEW POST</h2>
       <div>
-        <label for="posttitle">Post Title</label>
-        <input type="text" id="posttitle" name="post_title">
+        <label for="title">Post Title</label>
+        <input type="text" id="title" name="title">
       </div>
       <div>
-        <label for="post">New Post</label>
-        <input type="text" id="post" name="new_post">
+        <label for="url">URL</label>
+        <input type="url" id="url" name="url">
+      </div>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
       </div>
       <button type="submit">Submit Post</button>
     </form>

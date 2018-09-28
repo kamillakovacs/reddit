@@ -63,6 +63,8 @@ window.onload = () => {
       removeLink.innerText = "remove";
       voteCounter.innerHTML = post.score;
 
+      
+
       });
     }
   }
