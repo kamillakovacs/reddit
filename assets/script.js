@@ -15,9 +15,7 @@ window.onload = () => {
     postList.forEach(post => {
       const newDiv = document.createElement('div');
       const upButton = document.createElement('button');
-
-      const upArrow = document.createElement('img')
-      const downArrow = document.createElement('img')
+      const downButton = document.createElement('button');
       const voteCounter = document.createElement('div')
       const postColumn = document.createElement('div')
       const arrowColumn = document.createElement('div');
@@ -30,11 +28,8 @@ window.onload = () => {
       const removeLink = document.createElement('a');
 
       newDiv.classList.add('newPostDiv');
-      upArrow.setAttribute('src', 'assets/upvote.png');
-      downArrow.setAttribute('src', 'assets/downvote.png');
       upButton.classList.add('upbutton')
-      upArrow.classList.add('uparrow');
-      downArrow.classList.add('downarrow');
+      downButton.classList.add('downbutton');
       arrowColumn.classList.add('arrow-column');
       postColumn.classList.add('post-column');
       postLink.classList.add('post-link')
@@ -50,10 +45,9 @@ window.onload = () => {
       mainContent.appendChild(newDiv);
       newDiv.appendChild(arrowColumn)
       newDiv.appendChild(postColumn)
-      arrowColumn.appendChild(upButton)
-      arrowColumn.appendChild(upArrow)
+      arrowColumn.appendChild(upButton);
       arrowColumn.appendChild(voteCounter);
-      arrowColumn.appendChild(downArrow)
+      arrowColumn.appendChild(downButton);
       postColumn.appendChild(postLink);
       postColumn.appendChild(editPosts);
       editPosts.appendChild(removeDiv);
@@ -66,16 +60,19 @@ window.onload = () => {
       removeLink.innerText = "remove";
       voteCounter.innerHTML = post.score;
 
-
       upButton.addEventListener('click', () => {
-          console.log('click')
-          fetch(`${host}/posts/${post.id}/upvote`, {
-            method: 'put',
-          }).then((resp) => (resp.body))
-          // .then(response => {
-          // })
-      })
+        fetch(`${host}/posts/${post.id}/upvote`, {
+          method: 'put',
+        }).then((resp) => (resp.body))
+        voteCounter.textContent++;
+        })
 
+      downButton.addEventListener('click', () => {
+        fetch(`${host}/posts/${post.id}/downvote`, {
+          method: 'put',
+        }).then((resp) => (resp.body))
+        voteCounter.textContent--;
+        })
       });
     }
   }

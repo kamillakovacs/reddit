@@ -51,22 +51,35 @@ h2 {
 }
 
 .arrow-column {
-  width: 20px;
-  height: 25px;
+  width: 30px;
+  height: 40px;
   padding-right: 10px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.uparrow {
-  width: 20px;
-  padding: 5px;
+.upbutton {
+  background-image: url('upvote.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  height: 40px;
+  width: 40px;
+  padding: 15px;
 }
 
-.downarrow {
-  width: 20px;
-  padding: 5px;
+.downbutton {
+  background-image: url('downvote.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  height: 40px;
+  width: 40px;
+  padding: 15px;
+
 }
 
 #post-column {
