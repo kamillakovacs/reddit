@@ -11,11 +11,11 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 const conn = mysql.createConnection({
-  host: RDS_HOSTNAME ,
-  user: RDS_USERNAME,
-  password: RDS_PASSWORD,
-  database: RDS_DB_NAME,
-  port: RDS_PORT 
+  host: 'localhost',
+  user: 'root',
+  password: 'HowNice',
+  database: 'reddit',
+  port: '3306'
 });
 
 conn.connect((err) => {

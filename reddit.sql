@@ -1,4 +1,6 @@
 
+USE reddit;
+
 DROP TABLE IF EXISTS `posts`;
 
 CREATE TABLE `posts` (

@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image":{
-    "Name": "kamilla525/kovacsnorakamilla:redditthird"
+    "Name": "kamilla525/kovacsnorakamilla:reddit2"
   },
     "Ports": [       {
       "ContainerPort": "4040",
