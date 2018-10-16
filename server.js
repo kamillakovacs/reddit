@@ -1,20 +1,29 @@
 'use strict'
 
+// require('dotenv').config()
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 4040;
 const path = require('path');
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'HowNice',
-  database: `reddit`,
+  host: RDS_HOSTNAME ,
+  user: RDS_USERNAME,
+  password: RDS_PASSWORD,
+  database: RDS_DB_NAME,
+  port: RDS_PORT 
+});
+
+conn.connect((err) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log(`Connection to Db established`);
 });
 
 app.use('/assets', express.static('assets'));
@@ -46,7 +55,7 @@ app.post('/posts', jsonParser, (req, res) => {
   let postUser = req.body.username;
 
   if (postTitle && postURL && postUser) {
-    conn.query(`INSERT INTO posts (title, url, username) values ('${postTitle}', '${postURL}', '${postUser}');`, (err, result) => {
+    conn.query(`INSERT INTO posts (title, url, username) values (?, ?, ?);`, [postTitle, postURL, postUser], (err, result) => {
       if (err) {
         console.log(`Database error POST`);
         res.status(500).send(err.message);
@@ -58,9 +67,7 @@ app.post('/posts', jsonParser, (req, res) => {
           res.status(500).send(err.message)
           return;
         } 
-        res.status(200).json({
-          specificPost,
-        })
+        res.redirect('/');
       })
     } 
   )}
@@ -113,9 +120,7 @@ app.delete('/posts/:id', jsonParser, (req, res) => {
       res.status(500).send(err3.message);
       return;
     } 
-    res.status(200).json({
-      message: `Your post was deleted`,
-    })
+    res.redirect('/');
   })
 })
 

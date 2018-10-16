@@ -1,16 +1,46 @@
 body {
-  background-color: lightgray;
   font-family: 'Lato', sans-serif;
-  width: 800px;
-  height: 500px;
-  background-color: lightgray;
-  margin: auto;
+  background-color: rgb(255, 219, 255);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #container {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#maincolumn {
+  display: flex; 
+  flex-direction: column; 
+  flex-wrap: wrap;
+}
+
+img {
+  width: 800px;
+  display: block;
+  margin: 0 auto;
+}
+
+#form {
   background-color: white;
-  width: 300px;
+  width: 800px;
   height: 400px;
-  margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.titleDiv {
+  padding: 10px;
+}
+
+.urlDiv {
+  padding: 10px;
+}
+
+.usernameDiv {
   padding: 10px;
 }

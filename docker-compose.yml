@@ -1,0 +1,25 @@
+version: '3.7'
+
+services: 
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=hello
+      - MYSQL_DATABASE=reddit2
+    volumes:
+      - ./reddit.sql:/docker-entrypoint-initdb.d/reddit.sql
+    ports:  
+      - 3309:3306
+
+  reddit-frontend:
+    container_name: reddit
+    depends_on:
+      - mariadb
+    image: kamilla525/kovacsnorakamilla:reddit5
+    restart: always
+    ports:
+      - 4040:4040
+    network_mode: "host"
+    

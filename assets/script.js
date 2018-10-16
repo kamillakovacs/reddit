@@ -1,5 +1,5 @@
 window.onload = () => {
-  const host = 'http://localhost:3000';
+  const host = 'http://localhost:4040';
   const http = new XMLHttpRequest();
   const mainContent = document.querySelector('#maincontent');
   const newPostButton = document.querySelector('#newpostbutton');
@@ -24,10 +24,10 @@ window.onload = () => {
       const editPosts = document.createElement('div');
       const modifyDiv = document.createElement('div');
       const removeDiv = document.createElement('div');
-      const modifyLink = document.createElement('a');
-      const removeLink = document.createElement('a');
+      const modifyLink = document.createElement('button');
+      const removeLink = document.createElement('button');
 
-      newDiv.classList.add('newPostDiv');
+      newDiv.classList.add(`newPostDiv${post.id}`, 'newPostDiv');
       upButton.classList.add('upbutton')
       downButton.classList.add('downbutton');
       arrowColumn.classList.add('arrow-column');
@@ -36,11 +36,8 @@ window.onload = () => {
       postLink.setAttribute('href', post.url);
       postLink.setAttribute('target', "_blank");
       editPosts.classList.add('edit-posts');
-      modifyLink.setAttribute('href', 'http://www.google.com');
-      removeLink.setAttribute('href', 'http://www.google.com');
-      
-      modifyDiv.classList.add('modify-div');
-      removeDiv.classList.add('remove-div');
+      modifyLink.classList.add('modify-div');
+      removeLink.classList.add('remove-div');
 
       mainContent.appendChild(newDiv);
       newDiv.appendChild(arrowColumn)
@@ -72,6 +69,14 @@ window.onload = () => {
           method: 'put',
         }).then((resp) => (resp.body))
         voteCounter.textContent--;
+        })
+
+      removeLink.addEventListener('click', () => {
+        let removeThis = document.querySelector(`.newPostDiv${post.id}`);
+        mainContent.removeChild(removeThis);
+        fetch(`${host}/posts/${post.id}`, {
+          method: 'delete',
+        }).then((resp) => (resp.body))
         })
       });
     }

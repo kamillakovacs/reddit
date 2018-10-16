@@ -1,8 +1,8 @@
 {
-  "name": "reddit",
+  "name": "reddit2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/kamillakovacs/reddit#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
+    "dotenv": "^6.1.0",
     "express": "^4.16.3",
+    "mariadb": "^2.0.0-alpha",
     "mysql": "^2.16.0"
   }
 }

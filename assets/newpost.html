@@ -9,22 +9,29 @@
 </head>
 <body>
   <div id="container">
-    <form action="http://localhost:3000/posts" method="post" enctype="application/json">
+    <header>
+      <img src="microphone.png">
+    </header>
+    <div id="maincolumn">  
+      <form id="form" action="http://localhost:3000/posts" method="post" enctype="application/json">
       <h2>ADD NEW POST</h2>
-      <div>
-        <label for="title">Post Title</label>
-        <input type="text" id="title" name="title">
+      <div class="formelements">
+        <div class="titleDiv">
+          <label for="title">Post Title</label>
+          <input type="text" id="title" name="title">
+        </div>
+        <div class="urlDiv">
+          <label for="url">URL</label>
+          <input type="url" id="url" name="url">
+        </div>
+        <div class="usernameDiv">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username">
+        </div>
+        <button type="submit">Submit Post</button>
       </div>
-      <div>
-        <label for="url">URL</label>
-        <input type="url" id="url" name="url">
-      </div>
-      <div>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username">
-      </div>
-      <button type="submit">Submit Post</button>
-    </form>
+      </form>
+    </div>  
   </div>
 </body>
 </html>
