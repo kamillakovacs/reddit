@@ -1,15 +1,19 @@
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 800px;
   height: 500px;
-  background-color: lightgray;
+  background-color: rgb(255, 219, 255);
   margin: auto;
 }
 
 #container {
   display: flex;
   flex-wrap: wrap;
-  color: rgb(91, 91, 91)
+  color: rgb(72, 72, 72)
+}
+
+img {
+  width: 800px;
 }
 
 header {
@@ -26,6 +30,10 @@ header {
   width: 600px;
 }
 
+a:hover {
+  color: rgb(254, 70, 165);
+}
+
 #about {
   width: 190px;
   justify-content: center;
@@ -35,6 +43,7 @@ header {
 
 h2 {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #add-new {
@@ -48,6 +57,10 @@ h2 {
   background-color: white;
   margin: 0 0 10px 0;
   padding: 10px; 
+  border: 8px solid white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  
 }
 
 .arrow-column {
@@ -79,7 +92,6 @@ h2 {
   height: 40px;
   width: 40px;
   padding: 15px;
-
 }
 
 #post-column {
@@ -96,10 +108,27 @@ h2 {
   height: 70px;
 }
 
-.remove-div {
-  margin-right: 5px;
+#about p {
+  margin: 5px 0 15px 5px;
+  padding: 5px;
+  font-size: 13px;
 }
 
-img {
-  width: 800px;
+#about h2 {
+  margin: 10px 0 0 0;
 }
+
+#newpostbutton {
+  background: rgb(247, 153, 202);
+  height: 40px;
+  width: 120px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+.remove-div {
+  margin-right: 5px;
+
+}
+
+

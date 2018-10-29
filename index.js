@@ -9,7 +9,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-
 const conn = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -46,7 +45,7 @@ app.post('/posts', jsonParser, (req, res) => {
   let postUser = req.body.username;
 
   if (postTitle && postURL && postUser) {
-    conn.query(`INSERT INTO posts (title, url, username) values ('${postTitle}', '${postURL}', '${postUser}');`, (err, result) => {
+    conn.query(`INSERT INTO posts (title, url, username) values (?, ?, ?);`, [postTitle, postURL, postUser], (err, result) => {
       if (err) {
         console.log(`Database error POST`);
         res.status(500).send(err.message);
@@ -58,9 +57,7 @@ app.post('/posts', jsonParser, (req, res) => {
           res.status(500).send(err.message)
           return;
         } 
-        res.status(200).json({
-          specificPost,
-        })
+        res.redirect('/');
       })
     } 
   )}
@@ -113,9 +110,7 @@ app.delete('/posts/:id', jsonParser, (req, res) => {
       res.status(500).send(err3.message);
       return;
     } 
-    res.status(200).json({
-      message: `Your post was deleted`,
-    })
+    res.redirect('/');
   })
 })
 
