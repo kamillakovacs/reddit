@@ -1,8 +1,9 @@
 'use strict'
 
+// require('dotenv').config()
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 4040;
 const path = require('path');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -13,7 +14,16 @@ const conn = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'HowNice',
-  database: `reddit`,
+  database: 'reddit',
+  port: '3306'
+});
+
+conn.connect((err) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log(`Connection to Db established`);
 });
 
 app.use('/assets', express.static('assets'));

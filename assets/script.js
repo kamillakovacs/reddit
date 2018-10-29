@@ -1,5 +1,5 @@
 window.onload = () => {
-  const host = 'http://localhost:3000';
+  const host = 'http://localhost:4040';
   const http = new XMLHttpRequest();
   const mainContent = document.querySelector('#maincontent');
   const newPostButton = document.querySelector('#newpostbutton');
