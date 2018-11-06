@@ -21,9 +21,4 @@ reddit-frontend:
     restart: always
     ports:
       - 4040:4040
-<<<<<<< HEAD
     network_mode: "host"
-=======
-    network_mode: "host"
-    
->>>>>>> 325eea09d0ac9d8418bb7d1309c70c8fad41780f
