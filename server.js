@@ -53,7 +53,7 @@ app.post('/posts', jsonParser, (req, res) => {
   let postURL = req.body.url;
   let postUser = req.body.username;
 
-  if (postTitle && postURL && postUser) {
+  if (postTitle && postURL) {
     conn.query(`INSERT INTO posts (title, url, username) values (?, ?, ?);`, [postTitle, postURL, postUser], (err, result) => {
       if (err) {
         console.log(`Database error POST`);
