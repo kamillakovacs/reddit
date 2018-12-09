@@ -1,14 +1,14 @@
 'use strict'
 
 require('dotenv').config()
-const express = require('express');
-const app = express();
-const PORT = 4040;
-const path = require('path');
-const mysql = require('mysql');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
+const express = require('express'),
+  app = express(),
+  PORT = 4040,
+  path = require('path'),
+  mysql = require('mysql'),
+  cors = require('cors'),
+  bodyParser = require('body-parser'),
+  jsonParser = bodyParser.json();
 
 const conn = mysql.createConnection({
   host: process.env.MYSQL_HOST,
