@@ -78,6 +78,10 @@ window.onload = () => {
           method: 'delete',
         }).then((resp) => (resp.body))
         })
+
+        modifyLink.addEventListener('click', () => {
+          document.location.href = `${host}/assets/edit.html?${post.id}`
+        });
       });
     }
   }

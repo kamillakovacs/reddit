@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="newpost.css">
-  <title>Submit Some Stand-Up</title>
+  <script type="text/javascript" src="modifypost.js"></script>
+  <title>Edit Your Post</title>
 </head>
+
 <body>
   <div id="container">
     <header>
-      <img src="microphone.png">''
+      <img src="microphone.png">
     </header>
     <div id="maincolumn">  
-      <form id="form" action="http://localhost:4040/posts" method="post" enctype="application/json">
-      <h2>Submit Your Favorite Stand-Up</h2>
+      <form id="form" action="http://localhost:4040/posts/:id" method="get" enctype="application/json">
+      <h2>Edit Your Post</h2>
       <div class="formelements">
         <div class="titleDiv">
           <label for="title">Title of Show</label>
@@ -28,10 +30,11 @@
           <label for="username">Your Username</label>
           <input type="text" id="username" name="username">
         </div> -->
-        <button type="submit" style="float: right;">Submit</button>
+        <button type="submit" style="float: right;" action="http://localhost:4040/posts/:id" method="put" enctype="application/json">Submit</button>
       </div>
       </form>
     </div>  
   </div>
 </body>
+
 </html>
