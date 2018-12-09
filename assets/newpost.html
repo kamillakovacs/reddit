@@ -13,22 +13,22 @@
       <img src="microphone.png">
     </header>
     <div id="maincolumn">  
-      <form id="form" action="http://localhost:3000/posts" method="post" enctype="application/json">
-      <h2>ADD NEW POST</h2>
+      <form id="form" action="http://localhost:4040/posts" method="post" enctype="application/json">
+      <h2>Submit Your Favorite Stand-Up</h2>
       <div class="formelements">
         <div class="titleDiv">
-          <label for="title">Post Title</label>
+          <label for="title">Title of Show</label>
           <input type="text" id="title" name="title">
         </div>
         <div class="urlDiv">
-          <label for="url">URL</label>
+          <label for="url">Show URL</label>
           <input type="url" id="url" name="url">
         </div>
         <div class="usernameDiv">
-          <label for="username">Username</label>
+          <label for="username">Your Username</label>
           <input type="text" id="username" name="username">
         </div>
-        <button type="submit">Submit Post</button>
+        <button type="submit" style="float: right;">Submit</button>
       </div>
       </form>
     </div>  

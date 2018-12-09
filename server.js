@@ -31,7 +31,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended : false }));
 
 app.get('/', function(request, response) {
-  console.log(request.headers);
   response.sendFile(path.join(__dirname, 'index.html'));
 });
 
