@@ -3,8 +3,8 @@
 
 ## Features:
 * MySQL database containing stand-up comedy links and information
-* Main page with listing of current database contents, via REST API endpoints
-* Add Your Own Favorite Show feature to add new content
+* Main page with listing of current database contents using REST API/AJAX
+* Add Your Own Favorite Show feature to add new content into database
 * Modify feature to change existing database content, with pre-loaded form
 * Delete feature on main page, with auto-refresh to immediately show updated list
 
